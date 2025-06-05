@@ -1,23 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Container, CssBaseline } from '@mui/material';
-
-import Navbar from './Components/Navbar';
-import Home from './Pages/Home';
-import Favorites from './Pages/Favorites';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import { RouterProvider } from 'react-router-dom';
+import router from '../routes';
 
 function App() {
   return (
-    <Router>
-      <CssBaseline /> {}
-      <Navbar />
-      <Container maxWidth="md" sx={{ mt: 4 }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/favoritos" element={<Favorites />} />
-        </Routes>
-      </Container>
-    </Router>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   );
 }
 
